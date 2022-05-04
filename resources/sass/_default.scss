@@ -1,0 +1,262 @@
+$color-indigo   : #814ca7;
+$color-grean    :#33CC66;
+$color-red      :#E74C3C;
+$color-oreng    :#ffa632;
+$color-black    :#171717;
+$color-gray-blue:#525d64;
+$color-gray     :#1e1e20;
+$color-gray-f   :#757d8b;
+$color-blue     :#6495ed;
+$color-white    :#e0e0e0;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
+
+*{
+    transition: 0.1s;
+}
+html {
+    width     : 100vw;
+    overflow-x: hidden;
+    height    : 100%;
+}
+
+main {
+    min-height: 70vh;
+
+}
+
+body {
+
+    width           : 100vw;
+    overflow-x      : hidden;
+    background-color: $color-gray;
+   
+
+    &::-webkit-scrollbar {
+        width : 15px;
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor          : pointer;
+    }
+
+
+}
+
+@mixin font-size-auto($size, $color:#FFFFFF) {
+    font-size: $size;
+    color    : $color;
+
+    @media (max-width:1700px) {
+        font-size: $size/1.1;
+    }
+
+    @media (max-width:1500px) {
+        font-size: $size/1.2;
+    }
+
+    @media (max-width:800px) {
+        font-size: $size/1.3;
+    }
+
+    @media (max-width:600px) {
+        font-size: $size/1.4;
+    }
+
+    @media (max-width:400px) {
+        font-size: $size/1.42;
+    }
+}
+
+h1 {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    @include font-size-auto(4rem);
+    padding: 10px 0;
+}
+
+h2 {
+    @include font-size-auto(3.5rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    padding    : 8px 0;
+
+}
+
+h3 {
+    @include font-size-auto(3rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding    : 5px 0;
+
+}
+
+h4 {
+    @include font-size-auto(2.5rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding    : 5px 0;
+}
+
+h5 {
+    @include font-size-auto(2rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding    : 5px 0;
+}
+
+h6 {
+    @include font-size-auto(1.5rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding    : 5px 0;
+}
+
+p {
+    @include font-size-auto(1.5rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding    : 2px 0;
+}
+
+select {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size  : 1.2em;
+
+    option {
+        font-size: 1.0em;
+    }
+}
+
+span {}
+
+input {
+    @include font-size-auto(1.2rem);
+    font-family  : 'Montserrat', sans-serif;
+    font-weight  : 400;
+    padding      : 5px;
+    outline      : none;
+    background   : none;
+    border       : none;
+    border-radius: 5px;
+    width        : 100%;
+}
+
+button {
+    background: none;
+    @include font-size-auto(1.5rem);
+    font-family  : 'Montserrat', sans-serif;
+    font-weight  : 400;
+    padding      : 10px;
+    outline      : none;
+    border       : none;
+    border-radius: 5px;
+    cursor       : pointer;
+    position     : relative;
+    box-shadow   : rgba(0, 0, 0, 0.205) 0 0 20px;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.305) 0 0 20px;
+        transition: 0.3s;
+        opacity   : 0.9;
+    }
+
+    &:focus::after {
+        content            : '';
+        height             : 100%;
+        width              : 100%;
+        top                : 0;
+        filter             : blur(20px);
+        left               : 0;
+        border-radius      : 5px;
+        background-color   : rgba(255, 255, 255, 0.411);
+        position           : absolute;
+        opacity            : 0;
+        animation          : moveInBottom 0.7s ease-out;
+        animation-fill-mode: backwards;
+    }
+
+    @keyframes moveInBottom {
+        0% {
+            opacity  : 0.6;
+            transform: scale(1);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: scale(1.2);
+        }
+    }
+}
+
+a {
+    @include font-size-auto(1.5rem, $color-oreng);
+    font-family    : 'Montserrat', sans-serif;
+    font-weight    : 400;
+    text-decoration: none;
+    padding        : 3px 0;
+}
+
+
+
+
+.cnt {
+    padding: 0 15vw;
+
+    @media (max-width:1200px) {
+        padding: 0 5vw;
+
+    }
+
+    @media (max-width:800px) {
+        padding: 0 3vw;
+    }
+
+    @media (max-width:500px) {
+        padding: 0 2vw;
+    }
+}
+
+.p-t {
+
+    padding-top: 80px;
+
+    @media (max-width:1200px) {
+        padding-top: 0;
+
+    }
+
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+
+}
+
+@for $i from 1 through 10 {
+    .m-t-#{$i}0 {
+        margin-top: 10px*$i;
+    }
+
+    .m-b-#{$i}0 {
+        margin-bottom: 10px*$i;
+    }
+
+    .p-t-#{$i}0 {
+        padding-top: 10px*$i;
+    }
+
+    .p-b-#{$i}0 {
+        padding-bottom: 10px*$i;
+    }
+
+}
