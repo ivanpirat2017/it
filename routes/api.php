@@ -30,6 +30,7 @@ Route::get('generate', function (){
     echo 'ok';
 });
 
+
 Route::middleware('auth:api')->post('/service-create', [ServiceController::class, 'create']);//создать карточку сервиса(услуги)
 Route::get('/service-show/{id}', [ServiceController::class, 'show']);//вывод   карточек  сервиса(услуги)
 Route::get('/service-show-admin/{id}', [ServiceController::class, 'showAdmin']); //вывод все карточек сервиса(услуги) для админа

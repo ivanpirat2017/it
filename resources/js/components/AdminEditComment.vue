@@ -14,7 +14,7 @@
     </div>
     <div class="AdminWorkerCommentBtn">
       <button class="background-grean" @click="edit(0, 1)">+</button>
-      <button class="background-red" @click="edit(1, 0)">del</button>
+      <button class="background-red" @click="edit(1, 0)">-</button>
     </div>
   </div>
 </template>

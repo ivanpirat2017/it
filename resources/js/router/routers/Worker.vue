@@ -12,7 +12,7 @@
         ><button class="background-indigo">Админ панель</button></router-link
       >
        <router-link to="/worker/content"  v-if="$root.role == 'admin'"
-        ><button class="background-indigo">Редактировать контент</button></router-link
+        ><button class="background-indigo">Категории</button></router-link
       >
     </div>
     <router-view></router-view>

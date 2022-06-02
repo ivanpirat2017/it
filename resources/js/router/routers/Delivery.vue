@@ -27,7 +27,7 @@
 import OrderItem from "../../components/OrderItem.vue";
 
 import Loader from "../../components/Loader.vue";
-import { authCheck, OrederGet, ProfilEdit, Logout } from "../../api-routes";
+import { OrederGet } from "../../api-routes";
 export default {
   components: {
     OrderItem,
