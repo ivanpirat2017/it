@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service_option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ServiceOptionController extends Controller
 {
@@ -16,7 +17,13 @@ class ServiceOptionController extends Controller
                 'data' => false
             ], 412);
         }
-        Service_option::create($request->all());
+
+        Service_option::create([
+            'price' => $request->price,
+            'title' => $request->title,
+            'id_service' => $request->id_service,
+            'delivery' => (bool)$request->delivery,
+        ]);
         return response()->json(null, 204);
     }
 

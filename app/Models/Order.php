@@ -36,7 +36,7 @@ class Order extends Model
         $sum = 0;
         foreach (json_decode($items) as $value) {
             $cart = DB::table('services')->where('id', $value->id_service)->select('id', 'name')->first();
-            $cart->options = DB::table('service_options')->whereIn('id', $value->service_options)->select('id', 'title', 'price')->get();
+            $cart->options = DB::table('service_options')->whereIn('id', $value->service_options)->get();
             $sum += DB::table('service_options')->whereIn('id', $value->service_options)->sum('price');
             array_push($carts, $cart);
         }

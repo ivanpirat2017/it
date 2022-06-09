@@ -46,7 +46,7 @@ Route::get('/service-option-show/{id}',  [ServiceOptionController::class, 'show'
 Route::middleware('auth:api')->post('/service-option-del',  [ServiceOptionController::class, 'del']);//удаляет  услугу
 Route::middleware('auth:api')->post('/comment-create', [CommentController::class, 'create']);//создает  комментарий
 Route::middleware('auth:api')->post('/comment-edit',  [CommentController::class, 'edit']);//Редактирование   комментария
-Route::get('/comment-show/{id}',  [CommentController::class, 'show']);//выводит все комментарии к заказу
+Route::get('/comment-show',  [CommentController::class, 'show']);//выводит все комментарии к заказу
 Route::middleware('auth:api')->get('/comment-showadmin',  [CommentController::class, 'showAdmin']);//выводит все комментарии для просмотра админом
 Route::post('/get-cart',  [CartController::class, 'getCart']);//выводит все карточки
 Route::middleware('auth:api')->post('/editroleid', [AuthController::class, 'editRoleId']);//Изменения ролей пользователей

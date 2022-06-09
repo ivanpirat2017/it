@@ -132,7 +132,7 @@ router.beforeEach(async (to, from) => {
             }
         })
     }
-    if (to.fullPath == '/profile') {
+    if (to.fullPath == '/profile'||to.fullPath == '/delivery') {
         return await authCheck().then(r => {
             if (r.status == 200) {
             } else {

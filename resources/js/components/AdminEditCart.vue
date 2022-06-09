@@ -50,7 +50,7 @@ export default {
       await Form.append("name", this.title);
       await Form.append("description", text.textContent);
       await Form.append("image", fileimg.files[0]);
-      
+
       console.log(text);
       await this.axios({
         method: "post",

@@ -44,10 +44,8 @@ class SearchController extends Controller
         $options = Service_option::orWhere('title', 'like',  '%' . $qwery . '%')
             ->orWhere('price', 'like',  '%' . $qwery . '%')
             ->get();
-        $comment = Comment::orWhere('text_comment', 'like',  '%' . $qwery . '%')->where('approved', true)->get();
         return response()->json(['data' => [
             'ServiceOption' => ServiceOptionsSearchResource::collection($options),
-            'Comment' => CommentSearchResource::collection($comment),
         ]], 200);
     }
 }

@@ -27,7 +27,7 @@ export const ServiceOptionDel = url + '/service-option-del';
 
 
 export const CommentCreate = url + '/comment-create';
-export const CommentShow_ID = url + '/comment-show/';
+export const CommentShow_ID = url + '/comment-show';
 export const CommentEdit= url + '/comment-edit';
 export const CommentShowAdmin= url + '/comment-showadmin';
 

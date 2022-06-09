@@ -13,14 +13,16 @@ class Service_option extends Model
         'title',
         'price',
         'id_service',
+        'delivery'
     ];
 
 
     public function edit($request)
     {
-        $request->title?  $this->title = $request->title :null ;
-        $request->price? $this->price = $request->price :null;
-        $request->id_service? $this->id_service = $request->id_service :null;
+        $request->title ?  $this->title = $request->title : null;
+        $request->price ? $this->price = $request->price : null;
+        $request->id_service ? $this->id_service = $request->id_service : null;
+        $request->delivery ? $this->delivery = $request->delivery : null;
         $this->save();
     }
 }

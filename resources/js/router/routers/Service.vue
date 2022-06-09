@@ -24,45 +24,14 @@
                     Перейти в корзину, для оформления заказа
                 </button>
             </div>
-            <div class="infocount background-red" v-if="boolcommentlength">
-                <h5>
-                    Введите больше 10 символов для написания комментария.
-                </h5>
 
-            </div>
-            <div class="ServiceComment background-black">
-                <h5 v-if="$root.role != ''">Написать отзыв</h5>
-                <div class="ServiceCommentWrite" v-if="$root.role != ''">
-                    <p id="textmeggage" class="background-100" :class="{ 'border-indigo': focusWriteComment }"
-                        @mousemove="focusWriteComment = true" @mouseleave="focusWriteComment = false" contenteditable>
-                    </p>
-                    <button class="background-gray-blue" @click="createComment()">
-                        отправить
-                    </button>
-                </div>
-                <h5 v-if="comments.length != 0">Отзывы</h5>
-                <h5 v-else class="color-red">Отзывов нет</h5>
-                <div class="ServiceCommentitems">
-                    <div class="ServiceCommentitemsitem background-gray" v-for="comment in comments" :key="comment.id">
-                        <div class="ServiceCommentitemsitemName">
-                            <p class="color-oreng">
-                                {{ comment.user.surname }} {{ comment.user.name }}
-                            </p>
-                        </div>
-                        <div class="ServiceCommentitemsitemText">
-                            <p class="color-gray-f">{{ comment.text_comment }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </template>
 <script>
 import {
     ServiceIndex_ID,
-    CommentCreate,
-    CommentShow_ID,
+
 } from "../../api-routes";
 import Option from "../../components/Option.vue";
 import AdminOption from "../../components/AdminOption.vue";
@@ -79,12 +48,11 @@ export default {
             Options: [],
             cartOption: [],
             cartOptionSort: [],
-            comments: [],
             sortnum: 1,
             info: false,
-            focusWriteComment: false,
+
             loader: true,
-            boolcommentlength: false
+
         };
     },
     computed: {
@@ -111,34 +79,7 @@ export default {
         },
     },
     methods: {
-        createComment() {
-            const Form = new FormData();
-            const text = document.querySelector("#textmeggage");
-            if (text.textContent.length < 10) {
-                this.boolcommentlength = true
-                setTimeout(() => {
-                    this.boolcommentlength = false
-                }, 5000);
-                return 0;
-            }
-            Form.append("text_comment", text.textContent);
-            Form.append("id_service", this.$route.params.id);
 
-            this.axios({
-                method: "post",
-                headers: {
-                    Accept: "multipart/form-data",
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                },
-                url: CommentCreate,
-                data: Form,
-            })
-                .then((r) => {
-                    text.textContent = "";
-                    this.boolcommentlength = false
-                })
-                .catch((r) => { });
-        },
         getOptions() {
             this.axios.get(ServiceIndex_ID + this.$route.params.id).then((r) => {
                 this.cartOption = [];
@@ -199,10 +140,7 @@ export default {
     },
     mounted() {
         this.getOptions();
-        this.axios.get(CommentShow_ID + this.$route.params.id).then((r) => {
-            console.log(r);
-            this.comments = r.data.data;
-        });
+
     },
 };
 </script>
@@ -253,20 +191,16 @@ export default {
         border-radius: 10px;
         width: 98%;
         padding: 1%;
-
         @media (max-width: 800px) {
             width: 94%;
             padding: 3%;
         }
-
         display: flex;
         flex-direction: column;
-
         &items {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-
+            gap: 10px;
             &item {
                 display: flex;
                 border-radius: 5px;
@@ -291,7 +225,7 @@ export default {
             align-items: flex-end;
 
             p {
-                min-height: 200px;
+                min-height: 100px;
                 width: 98%;
                 padding: 1%;
 

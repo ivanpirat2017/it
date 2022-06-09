@@ -14,7 +14,6 @@ class CommentController extends Controller
 
         Comment::create([
             'id_user' => Auth::user()->id,
-            'id_service' => $request->id_service,
             'text_comment' => $request->text_comment,
             'approved' => 0,
             'del' => 0,
@@ -23,9 +22,9 @@ class CommentController extends Controller
     }
 
 
-    public function show($id)
+    public function show()
     {
-        return response()->json(['data' => CommentResource::collection(Comment::where('id_service', $id)->where('approved', true)->get())], 200);
+        return response()->json(['data' => CommentResource::collection(Comment::where('approved', true)->limit(20)->get())], 200);
     }
     public function showAdmin()
     {
